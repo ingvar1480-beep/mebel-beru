@@ -34,4 +34,7 @@ function showCategory(category) {
 }
 
 document.querySelectorAll('[data-category]').forEach(control => control.addEventListener('click', () => showCategory(control.dataset.category)));
+document.querySelectorAll('.mobile-menu nav a').forEach(link => link.addEventListener('click', () => {
+  document.querySelector('.mobile-menu').open = false;
+}));
 showCategory('all');

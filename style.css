@@ -19,3 +19,33 @@
 .text-link{font-size:14px}
 @media(max-width:1100px){.nav{gap:24px}.header{padding-top:8px;padding-bottom:12px}}
 @media(max-width:650px){.brand img{width:130px;height:82px}.nav{font-size:15px}.category{font-size:15px;padding:12px 18px}.announcement{font-size:9px}.hero-copy>p,.section-top>p,.story-copy p,.contact>div>p{font-size:15px}}
+.mobile-menu{display:none}
+@media(max-width:650px){
+  .announcement{height:auto;min-height:31px;padding:7px 12px;text-align:center;line-height:1.5;gap:6px;letter-spacing:.08em}
+  .header{position:relative;display:flex;flex-wrap:nowrap;min-height:0;gap:12px;padding:5px 5%}
+  .brand img{width:130px;height:82px}
+  .header>.nav,.header-link{display:none}
+  .mobile-menu{display:block;margin-left:auto}
+  .mobile-menu summary{display:flex;align-items:center;gap:12px;min-height:48px;padding:0 14px;border:1px solid #d6d1c6;font-size:15px;font-weight:700;cursor:pointer;list-style:none}
+  .mobile-menu summary::-webkit-details-marker{display:none}
+  .mobile-menu summary span{font-size:21px}
+  .mobile-menu nav{position:absolute;z-index:10;top:100%;left:0;right:0;padding:8px 5% 16px;background:#faf9f5;box-shadow:0 12px 20px #2928201a}
+  .mobile-menu nav a{display:flex;align-items:center;min-height:48px;border-bottom:1px solid var(--line);font-size:15px;font-weight:700}
+  .hero-copy{padding:48px 5% 36px}
+  .hero h1{font-size:clamp(43px,11vw,58px)}
+  .hero-image{min-height:280px}
+  .hero-stamp{top:auto;bottom:235px;right:5%;z-index:1}
+  .benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;white-space:normal;overflow:visible;font-size:12px;line-height:1.5}
+  .section{padding:60px 5%}
+  .section h2{font-size:clamp(36px,9vw,43px)}
+  .category-list{gap:8px}
+  .category{flex:1 1 auto;min-height:48px}
+  .product-image{height:auto;aspect-ratio:4/3}
+  .product-heading{align-items:start;flex-wrap:wrap}
+  .options select{font-size:16px}
+  .story-image{height:auto;aspect-ratio:4/5}
+  .contact-card{padding:30px 24px}
+  .contact-spark{right:24px;top:24px}
+  .button{max-width:100%;gap:25px}
+}
+@media(max-width:360px){.announcement{font-size:8px}.brand img{width:115px}.hero h1{font-size:42px}.benefits{grid-template-columns:1fr}.contact-card h3{font-size:32px}}
