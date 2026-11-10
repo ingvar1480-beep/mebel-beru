@@ -15,8 +15,13 @@ const products = [
 const names = { all: 'Вся мебель', sofas: 'Диваны', beds: 'Кровати', mattresses: 'Матрасы', storage: 'Корпусная мебель', kitchens: 'Кухни' };
 const container = document.querySelector('#products');
 
-function selectMarkup(label, values, id) {
-  return `<label for="${id}">${label}</label><select id="${id}">${values.map(value => `<option>${value}</option>`).join('')}</select>`;
+const colors = { 'бежевый': '#d8c2aa', 'карамельный': '#af8060', 'серый': '#a3a19c', 'молочный': '#ede4d7', 'песочный': '#d9c7a9', 'оливковый': '#899078', 'дуб натуральный': '#c7a77d', 'белый': '#f5f2ea', 'орех': '#8e684f', 'графит': '#555751', 'тёплый белый': '#eee9dd' };
+
+function optionMarkup(label, values, id, swatches = false) {
+  return `<fieldset class="option-group"><legend>${label}</legend><div class="option-choices ${swatches ? 'swatch-choices' : ''}">${values.map((value, i) => {
+    const color = colors[value.split(', ').pop().toLowerCase()] || '#d8c2aa';
+    return `<label class="choice"><input type="radio" name="${id}" value="${value}" ${i === 0 ? 'checked' : ''}><span>${swatches ? `<i class="swatch" style="--swatch:${color}" aria-hidden="true"></i>` : ''}${value}</span></label>`;
+  }).join('')}</div></fieldset>`;
 }
 
 function showCategory(category) {
@@ -27,9 +32,9 @@ function showCategory(category) {
   document.querySelectorAll('.category').forEach(button => button.classList.toggle('active', button.dataset.category === category));
   container.innerHTML = visible.map((product, index) => `<article class="product">
     <div class="product-image"><img src="https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=900&q=80" alt="${product.name}" loading="lazy"><span>${product.tag}</span></div>
-    <div class="product-heading"><div><p class="product-category">${names[product.category]}</p><h3>${product.name}</h3></div><strong>${product.price}</strong></div>
-    <p class="product-description">${product.description}</p><p class="delivery">◷ &nbsp; Доставка: ${product.delivery}</p>
-    <div class="options">${selectMarkup(product.option, product.options, `option-${index}`)}${product.second ? selectMarkup(product.second[0], product.second.slice(1), `second-${index}`) : ''}</div>
+    <div class="product-body"><div class="product-heading"><div><p class="product-category">${names[product.category]}</p><h3>${product.name}</h3></div><strong>${product.price}</strong></div>
+    <p class="product-description">${product.description}</p><p class="delivery"><span aria-hidden="true">◷</span> Доставка <strong>${product.delivery}</strong></p>
+    <div class="options">${optionMarkup(product.option, product.options, `option-${index}`, ['sofas', 'storage', 'kitchens'].includes(product.category))}${product.second ? optionMarkup(product.second[0], product.second.slice(1), `second-${index}`) : ''}</div></div>
   </article>`).join('');
 }
 
