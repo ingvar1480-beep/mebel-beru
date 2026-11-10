@@ -49,3 +49,17 @@
   .button{max-width:100%;gap:25px}
 }
 @media(max-width:360px){.announcement{font-size:8px}.brand img{width:115px}.hero h1{font-size:42px}.benefits{grid-template-columns:1fr}.contact-card h3{font-size:32px}}
+
+/* Более заметный логотип и навигация по каталогу */
+.brand img{width:210px;height:110px}
+.nav{gap:6px}
+.nav a{padding:0 10px;border:1px solid transparent;border-radius:10px;transition:background .2s,border-color .2s,color .2s}
+.nav a:hover,.nav a:focus-visible{background:#f1ebe1;border-color:#e2d6c7;color:var(--red)}
+.category-list{padding:16px;background:#eee9df;border:1px solid #e1d9cc;border-radius:16px}
+.category{background:#faf8f3;border-color:#d6cabc;color:#4b453b;box-shadow:0 2px 4px #4033260d;transition:background .2s,border-color .2s,color .2s,transform .2s}
+.category:hover,.category:focus-visible{background:#e5dbcd;border-color:#a89b88;color:#292820}
+.category.active,.category.active:hover{background:#a32027;border-color:#a32027;color:#fff}
+.category:active{transform:translateY(1px)}
+@media(max-width:1100px){.nav{gap:6px}}
+@media(max-width:650px){.brand img{width:185px;height:100px}.category-list{padding:12px;border-radius:14px}.mobile-menu nav a{padding:0 10px;border-radius:8px}.mobile-menu nav a:hover,.mobile-menu nav a:focus-visible{background:#eee9df;color:var(--red)}}
+@media(max-width:360px){.brand img{width:155px;height:90px}.mobile-menu summary{padding:0 10px;gap:6px}}
