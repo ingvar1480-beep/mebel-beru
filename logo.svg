@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" role="img" aria-labelledby="title">
+  <title id="title">Мебель-беру — классический логотип с креслом</title>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="165" cy="180" r="115" stroke="#a51d25" stroke-width="4"/>
+    <circle cx="165" cy="180" r="104" stroke="#1b1b1b" stroke-width="1.5"/>
+    <path d="M116 174v-23c0-28 20-47 49-47s49 19 49 47v23M116 174c-12-9-25-2-25 12v27h148v-27c0-14-13-21-25-12v19h-98zM107 214v17m116-17v17M133 148c9-8 19-12 32-12s23 4 32 12" stroke="#1b1b1b" stroke-width="6"/>
+    <path d="M125 232h80" stroke="#a51d25" stroke-width="4"/>
+  </g>
+  <text x="310" y="184" fill="#1b1b1b" font-family="Georgia, 'Times New Roman', serif" font-size="75" font-weight="bold" letter-spacing="-2">МЕБЕЛЬ<tspan fill="#a51d25">-БЕРУ</tspan></text>
+  <path d="M312 213h110m390 0h112" stroke="#a51d25" stroke-width="2"/>
+  <text x="617" y="221" text-anchor="middle" fill="#333" font-family="Georgia, 'Times New Roman', serif" font-size="23" letter-spacing="4">МЕБЕЛЬНЫЙ МАГАЗИН</text>
+</svg>
