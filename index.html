@@ -9,8 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=6">
-  <script src="app.js?v=5" defer></script>
+  <link rel="stylesheet" href="style.css?v=7">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+  <script src="app.js?v=7" defer></script>
 </head>
 <body>
   <div class="announcement">МЕБЕЛЬ ДЛЯ ЖИЗНИ, КОТОРУЮ ВЫ ЛЮБИТЕ <span>✳</span> СОЗДАНО ДЛЯ УЮТА</div>
@@ -59,15 +60,20 @@
       <div class="category-list" role="group" aria-label="Категории товаров">
         <button class="category active" data-category="all">Всё <span>↗</span></button><button class="category" data-category="sofas">Диваны</button><button class="category" data-category="beds">Кровати</button><button class="category" data-category="mattresses">Матрасы</button><button class="category" data-category="storage">Корпусная мебель</button><button class="category" data-category="kitchens">Кухни</button>
       </div>
-      <div class="catalog-bar"><p id="catalog-title">Вся мебель <span id="product-count"></span></p><span>ВЫБИРАЙТЕ С УДОВОЛЬСТВИЕМ ✳</span></div>
+      <div class="catalog-bar"><p id="catalog-title">Вся мебель <span id="product-count"></span></p><button class="admin-action" id="add-product" hidden>+ Добавить товар</button><span>ВЫБИРАЙТЕ С УДОВОЛЬСТВИЕМ ✳</span></div>
+      <p id="catalog-status" role="status"></p>
       <div class="products" id="products"></div>
-      <p class="demo-note">Товары, фотографии, цены и сроки доставки представлены для примера и будут уточнены.</p>
+      <p class="demo-note" id="demo-note">Товары, фотографии, цены и сроки доставки представлены для примера и будут уточнены.</p>
     </section>
 
     <section class="story section"><div class="story-image"><span>ДОМ — ЭТО ПРО ВАС</span></div><div class="story-copy"><div class="eyebrow"><span class="dot"></span> НЕМНОГО О НАС</div><h2>Хороший дом<br>начинается с <em>уюта.</em></h2><p>Мы верим, что мебель — это больше, чем просто вещи. Это долгие завтраки, уютные вечера и моменты, которые становятся воспоминаниями.</p><p>В «Мебель-Беру» можно подобрать решения для разных комнат и настроений — и создать пространство по-настоящему под себя.</p><a class="text-link" href="#contacts">Давайте знакомиться <span>↗</span></a></div></section>
 
     <section class="contact section" id="contacts"><div><div class="eyebrow"><span class="dot"></span> МЫ НА СВЯЗИ</div><h2>Есть вопросы?<br><em>Давайте поговорим.</em></h2><p>Поможем с выбором мебели, расскажем о вариантах и доставке.</p><a class="text-link" href="#catalog">Вернуться в каталог <span>↗</span></a></div><div class="contact-card"><span class="contact-spark">✳</span><h3>Будем рады<br>вам помочь.</h3><dl class="contact-details"><div><dt>Телефон</dt><dd>Скоро добавим</dd></div><div><dt>Адрес магазина</dt><dd>Скоро добавим</dd></div><div><dt>Часы работы</dt><dd>Скоро добавим</dd></div></dl><p class="contact-map-note">Карта появится, когда будет известен адрес магазина.</p></div></section>
   </main>
-  <footer><a class="footer-brand" href="#home">МЕБЕЛЬ<span>-БЕРУ</span></a><p>Мебель для дома, в который хочется возвращаться.</p><div>© 2026 МЕБЕЛЬ-БЕРУ <a href="#home">НАВЕРХ ↑</a></div></footer>
+  <footer><a class="footer-brand" href="#home">МЕБЕЛЬ<span>-БЕРУ</span></a><p>Мебель для дома, в который хочется возвращаться.</p><div><span>© 2026 МЕБЕЛЬ-БЕРУ <button class="admin-entry" id="admin-entry" aria-label="Вход администратора">⚙</button></span><a href="#home">НАВЕРХ ↑</a></div></footer>
+  <dialog id="auth-dialog" class="admin-dialog"><form id="auth-form"><button class="dialog-close" type="button" data-close aria-label="Закрыть">×</button><h2>Вход администратора</h2><label>Электронная почта<input name="email" type="email" autocomplete="username" required></label><label>Пароль<input name="password" type="password" autocomplete="current-password" required></label><p class="form-message" role="alert"></p><button class="admin-action" type="submit">Войти</button></form></dialog>
+  <dialog id="product-dialog" class="admin-dialog"><form id="product-form"><button class="dialog-close" type="button" data-close aria-label="Закрыть">×</button><h2 id="product-form-title">Товар</h2><input type="hidden" name="id"><label>Категория<select name="category" required><option value="sofas">Диваны</option><option value="beds">Кровати</option><option value="mattresses">Матрасы</option><option value="storage">Корпусная мебель</option><option value="kitchens">Кухни</option></select></label><label>Название<input name="name" required maxlength="150"></label><label>Описание<textarea name="description" rows="3"></textarea></label><label>Цена<input name="price" required placeholder="Например, 49 900 ₽"></label><label>Срок доставки<input name="delivery" required placeholder="Например, от 7 до 14 дней"></label><label>Фото товара<input name="photo" type="file" accept="image/jpeg,image/png,image/webp"></label><label>Или ссылка на изображение<input name="image" type="url" placeholder="https://..."></label><label>Подпись на фото<input name="tag" maxlength="80"></label><label>Название характеристики<input name="option_label" placeholder="Например, Ткань"></label><label>Варианты (каждый с новой строки)<textarea name="options" rows="3"></textarea></label><label>Название второй характеристики<input name="second_label" placeholder="Например, Жёсткость"></label><label>Варианты второй характеристики<textarea name="second_options" rows="3"></textarea></label><p class="form-message" role="alert"></p><button class="admin-action" type="submit">Сохранить</button></form></dialog>
+  <dialog id="calendar-dialog" class="admin-dialog"><div><button class="dialog-close" type="button" data-close aria-label="Закрыть">×</button><h2>Календарь событий</h2><p>Здесь появится календарь после уточнения его функционала.</p></div></dialog>
+  <div id="admin-bar" class="admin-bar" hidden><span>Режим администратора</span><button id="calendar-open">Календарь событий</button><button id="sign-out">Выйти</button></div>
 </body>
 </html>
