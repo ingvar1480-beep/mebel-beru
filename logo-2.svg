@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="235 20 530 335" role="img" aria-labelledby="title">
+  <title id="title">Мебель-беру — классическая эмблема с диваном</title>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M368 150 500 49l132 101M393 130v-23l107-81 107 81v23" stroke="#a51d25" stroke-width="5"/>
+    <path d="M421 172v-27c0-18 12-30 30-30h98c18 0 30 12 30 30v27M421 171c-10-10-24-4-24 8v26h206v-26c0-12-14-18-24-8v15H421zM413 206v12m174-12v12M500 119v65" stroke="#1b1b1b" stroke-width="5"/>
+    <path d="M400 229h200" stroke="#a51d25" stroke-width="3"/>
+  </g>
+  <text x="500" y="303" text-anchor="middle" fill="#1b1b1b" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="bold" letter-spacing="1">МЕБЕЛЬ<tspan fill="#a51d25">-БЕРУ</tspan></text>
+  <path d="M244 339h75m362 0h75" stroke="#a51d25" stroke-width="2"/>
+  <text x="500" y="347" text-anchor="middle" fill="#333" font-family="Georgia, 'Times New Roman', serif" font-size="22" letter-spacing="4">МЕБЕЛЬНЫЙ МАГАЗИН</text>
+</svg>
